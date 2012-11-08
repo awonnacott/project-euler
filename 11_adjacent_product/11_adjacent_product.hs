@@ -1,7 +1,7 @@
 import Data.List
 getFromList :: [a] -> Int -> Int -> [a]
 getFromList list1 start len = if len == 0 then [] else (list1 !! start):(getFromList list1 (start+1) (len-1))
-grid :: [[Int]]
+grid :: Integral a => [[a]]
 grid = [[08, 02, 22, 97, 38, 15, 00, 40, 00, 75, 04, 05, 07, 78, 52, 12, 50, 77, 91, 08],
         [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 04, 56, 62, 00],
         [81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 03, 49, 13, 36, 65],
@@ -33,6 +33,6 @@ incSets = [[(grid !! (x+3) !! y), (grid !! (x+2) !! (y+1)), (grid !! (x+1) !! (y
 sets :: [[Int]]
 sets = nub (hSets ++ vSets ++ decSets ++ incSets)
 products :: [Int]
-products = nub (map product sets)
+products = nub . map product sets
 main :: IO ()
-main = putStrLn (show (maximum products))
+main = print . maximum products
