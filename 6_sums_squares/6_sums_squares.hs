@@ -6,4 +6,4 @@ main :: IO ()
 main = do
         putStr "Enter a number: "
         nStr <- getLine
-        putStrLn (show (doProblem (read nStr)))
+        print . doProblem . read nStr
