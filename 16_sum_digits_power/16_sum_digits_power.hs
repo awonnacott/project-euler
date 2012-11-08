@@ -10,13 +10,5 @@ c2n x = case x of
         '7' -> 7
         '8' -> 8
         '9' -> 9
-n :: Num a => a
-n = 2 ^ 1000
-nS :: String
-nS = show n
-nA :: Num a => [a]
-nA = [c2n x | x <- nS]
-a :: Num a => a
-a = sum nA
 main :: IO ()
-main = putStrLn $ show $ sum nA
+main = print . sum [c2n x | x <- show (2 ^ 1000)]
